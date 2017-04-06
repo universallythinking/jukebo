@@ -116,6 +116,9 @@ a#nameify {
   <center><div id="footer2"></div></center>
   <script>
       $("document").on(ready, function () {
+	      $("#load").onclick(function() {
+		      localStorage.clear();
+	      });
           var access_token;
           if (localStorage.current_token) {
               access_token = localStorage.current_token;

@@ -31,13 +31,13 @@
         <data host="" scheme="jukebox" />
     </intent-filter>
     <access origin="*" />
-    <access origin="https://spartify.herokuapp.com/" />
+    <access origin="http://spartify.herokuapp.com/" />
     <allow-intent href="*" />
     <allow-navigation href="*" />
     <allow-intent href="https://spartify.herokuapp.com/" />
     <allow-navigation href="https://*" />
     <allow-intent href="https://*" />
-    <allow-navigation href="https://spartify.herokuapp.com/" />
+    <allow-navigation href="http://spartify.herokuapp.com/" />
     <icon src="icon.png" />
     <splash density="land-hdpi" src="res/screens/android/screen-hdpi-landscape.png" />
     <splash density="land-ldpi" src="res/screens/android/screen-ldpi-landscape.png" />

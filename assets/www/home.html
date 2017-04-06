@@ -129,7 +129,7 @@ form#host {
                     object["search"] = localStorage.search;
                     $.ajax({
                         type: "POST",
-                        url: 'https://spartify.herokuapp.com/',
+                        url: 'http://spartify.herokuapp.com/',
                         dataType: "json",
                         data: object,
                         success: function (accessData) {
@@ -146,7 +146,7 @@ form#host {
                             localStorage["current_token"] = $.parseJSON(accessData["access_token"]);
                             setTimeout(function () { location.href = "file:///android_asset/www/index.html"; }, 100);
                         }, error: function (e, ee, eee) {
-                            console.log(e + ee + eee);
+                            alert("We could not find a party with that name");
                         }
                     });
                 }

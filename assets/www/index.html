@@ -31,15 +31,10 @@
                 }
        });
       }
-      setInterval(function () {
-        if (localStorage.userID && !localStorage.Snapster && !localStorage.party) {
-            window.open("welcome.html", "_self");
-        }
-      }, 1000);
 
       setInterval(function () {
         if (!localStorage.url && !localStorage.userID && !localStorage.lastFM && !localStorage.Snapster) {
-            window.open("home.html", "_self");
+            location.href = "/home.html";
         }
       }, 1000);
       window.clearStorage = function () {

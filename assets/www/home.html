@@ -133,7 +133,6 @@ form#host {
                         dataType: "json",
                         data: object,
                         success: function (accessData) {
-                            console.log(accessData);
                             localStorage["complete_access"] = true;
                             localStorage['password'] = $.parseJSON(accessData["password"]);
                             localStorage['explicit'] = $.parseJSON(accessData["explicit"]);
@@ -146,7 +145,7 @@ form#host {
                             localStorage["current_token"] = $.parseJSON(accessData["access_token"]);
                             setTimeout(function () { location.href = "file:///android_asset/www/index.html"; }, 100);
                         }, error: function (e, ee, eee) {
-                            alert("We could not find a party with that name");
+                            alert("We could not find a party called " + localStorage.search + "...");
                         }
                     });
                 }

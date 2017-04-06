@@ -67,7 +67,7 @@ $(".voteBtn").mouseover(function () {
      $.ajax({
          async: false,
          type: "POST",
-         url: "http://app.partymusic.co/clearVotes",
+         url: "https://spartify.herokuapp.com/clearVotes",
          dataType: "json",
          data: object,
          success: function (clearedData) {
@@ -134,7 +134,7 @@ window.updateFooter2 = function() {
            $.ajax({
                async: true,
                type: "POST",
-               url: "http://app.partymusic.co/songRefresh",
+               url: "https://spartify.herokuapp.com/songRefresh",
                dataType: "json",
                data: obj1,
                success: function (currentData) {
@@ -158,7 +158,7 @@ window.updateFooter = function() {
             $.ajax({
                async: false,
                type: "POST",
-               url: "http://app.partymusic.co/songRefresh",
+               url: "https://spartify.herokuapp.com/songRefresh",
                dataType: "json",
                data: obj1,
                success: function (currentData) {
@@ -423,7 +423,7 @@ try {
     $.ajax({
         async: true,
         type: "POST",
-        url: "http://app.partymusic.co/votes",
+        url: "https://spartify.herokuapp.com/votes",
         dataType: "json",
         data: object,
         success: function (dataFirst) {
@@ -527,7 +527,7 @@ votedSongs();
            $.ajax({
                async: false,
                type: "POST",
-               url: "http://app.partymusic.co/upVote",
+               url: "https://spartify.herokuapp.com/upVote",
                dataType: "json",
                data: object,
                success: function (dataFirst) {
@@ -607,7 +607,7 @@ votedSongs();
              $.ajax({
                  async: true,
                  type: "POST",
-                 url: "http://app.partymusic.co/downVote",
+                 url: "https://spartify.herokuapp.com/downVote",
                  dataType: "json",
                  data: object,
                  success: function (dataFirst) {

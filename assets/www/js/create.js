@@ -6,7 +6,7 @@ $(document).ready(function () {
     window.newToken = function () {
         $.ajax({
 	    type: "GET",
-            url: 'https://spartify.herokuapp.com/refresh_token',
+            url: 'http://spartify.herokuapp.com/refresh_token',
             data: {
                 'refresh_token': localStorage["refresh_token"]
             }

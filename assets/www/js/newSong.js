@@ -8,7 +8,7 @@ $(document).ready(function () {
      $.ajax({
          async: false,
          type: "POST",
-         url: "https://spartify.herokuapp.com/clearVotes",
+         url: "http://spartify.herokuapp.com/clearVotes",
          dataType: "json",
          data: object,
          success: function (clearedData) {
@@ -128,7 +128,7 @@ else if (document.getElementById('filename').value.toLowerCase() == "reload.") {
                 window.localStorage.clear("totalSongs");
                 window.localStorage.clear("url");
                 window.localStorage.clear("userID");
-                window.location.href = "https://spartify.herokuapp.com/thank-you-host.html";
+                window.location.href = "http://spartify.herokuapp.com/thank-you-host.html";
             }
             else if (document.getElementById('filename').value.toLowerCase() == localStorage["password"].toString().toLowerCase() + ".") {
             	 localStorage["power_voter"] = "yes";

@@ -8,7 +8,7 @@
 <!-- versionCode is optional and Android only -->
 
   <name>Jukebox</name>
-  <gap:plugin name="com.indigoway.cordova.whitelist.whitelistplugin" />
+  <gap:plugin name="cordova.whitelist.whitelistplugin" />
     <access origin="http://*" />
   <description>
       Jukebox for Spotify Premium.

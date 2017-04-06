@@ -12,7 +12,7 @@
   <description>
       Jukebox for Spotify Premium.
   </description>
-
+  <icon src="icon.png" />
   <author href="http://universallythinking.com" email="support@universallythinking.com">
       Ben Barnett
   </author>

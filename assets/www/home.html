@@ -130,7 +130,7 @@ form#host {
                     $.ajax({
                         type: "POST",
                         url: 'http://spartify.herokuapp.com/',
-                        dataType: "json",
+                        dataType: "jsonp",
                         data: object,
                         success: function (accessData) {
                             console.log(accessData);

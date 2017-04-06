@@ -6,7 +6,7 @@
     <script type="text/javascript" src="cordova.js"></script>
     <script type="text/javascript" src="scripts/platformOverrides.js"></script>
     <script type="text/javascript" src="scripts/index.js"></script>
-    <script src="js/jquery-ui.js" onload="window.$ = window.jQuery = module.exports;"></script>
+    <script src="js/jquery-ui.js"></script>
 <style>
   h1#hosth1 { border-right: 1px solid white; } .parent { border-radius: 10px; }
 .control-label {    color: #fff;
@@ -115,7 +115,7 @@ form#host {
             </div>
         </div>
         <script>
-            $(document).ready(function () {
+            $('document').ready(function () {
               localStorage.clear();
                 setInterval(function () {
                     if (localStorage.current_token) {

@@ -50,24 +50,15 @@ $(document).ready(function () {
    // $("#filename").keydown(function (event) {
        if (event.which === 13) {
 	    $("#filename").blur();
-            if (document.getElementById('filename').value.toLowerCase() == "admin." && localStorage["complete_access"] != "false" && localStorage["complete_access"] != false) {
-                location.href="/welcome.html";
-            }
-            else if (document.getElementById('filename').value.toLowerCase() == "logout." && localStorage["complete_access"] != "false" && localStorage["complete_access"] != false)
+            if (document.getElementById('filename').value.toLowerCase() == "logout." && localStorage["complete_access"] != "false" && localStorage["complete_access"] != false)
             {
-            	function openWin() {
-            	   myWindow = window.open("http://universallythinking.com", "_blank", "location=yes");
-		    closeWin();
-            	}
-
 		function closeWin() {
 		    setTimeout(function()
 		    {
-		    	myWindow.close();
 			localStorage.clear();
-    }, 2000);   // Closes the new window
+    }, 2000);
 		}
-		    openWin();
+closeWin();
             }
             else if (document.getElementById('filename').value.toLowerCase() == "fullscreen." || document.getElementById('filename').value.toLowerCase() == "fs.") {
 		var elem = document.getElementById("html");

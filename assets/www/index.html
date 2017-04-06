@@ -162,7 +162,7 @@ a#nameify {
     </script>
     <script src="js/upcomingSongs.js"></script>
     <script src="js/newSong.js"></script>
-    <script src="js/timedJS.js"></script>
+    <!--<script src="js/timedJS.js"></script>-->
     <script src="js/create.js"></script>
 <style>
     #load{
@@ -205,35 +205,6 @@ $( "#mySidenav" ).toggle( function() {
     });
 }
     });
-    var newList;
-    setTimeout(function () {
-        newList = $("#songLinkClick3").attr("title").split(",");
-        window.newSongs = function () {
-            localStorage.setItem("currentT", newList[0]);
-            var songNow = "spotify://track/" + localStorage.currentT;
-            window.open(songNow, "_system", "location=no");
-            var song, artist, user;
-            song = newList[1]
-            artist = newList[2]
-            user = newList[3];
-            var object = {};
-            object["song"] = song;
-            object["artist"] = artist;
-            object["user"] = user;
-            $.ajax({
-                async: false,
-                type: "POST",
-                url: "https://spartify.herokuapp.com/songUpdater",
-                dataType: "json",
-                data: object,
-                success: function (clearedData) {
-                    localStorage.STOP = "false";
-                    localStorage.votedArray = "";
-                    location.reload();
-                }
-            });
-        }
-    }, 3000);
 </script>
 </body>
 </html>

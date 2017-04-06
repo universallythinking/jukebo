@@ -161,7 +161,7 @@ localStorage["allowed"] = "true";
             localStorage.setItem("lastFM", $("#partyName").val().toLowerCase());
             localStorage.setItem("password", $("#Superpower").val().toLowerCase());
             localStorage.setItem("explicit", $('input[name=radios]:checked').val());
-            window.open("playlists.html", "_self");
+location.href = "file:///android_asset/www/home.html";
 });
  $("#Superpower").on("keypress", function(e) {
 	 if (e.which === 13){
@@ -169,7 +169,7 @@ localStorage["allowed"] = "true";
             localStorage.setItem("lastFM", $("#partyName").val().toLowerCase());
             localStorage.setItem("password", $("#Superpower").val().toLowerCase());
             localStorage.setItem("explicit", $('input[name=radios]:checked').val());
-            window.open("playlists.html", "_self");
+location.href = "file:///android_asset/www/home.html";
 	 }
 });
 </script>

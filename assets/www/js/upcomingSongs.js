@@ -42,14 +42,22 @@ if (typeof document.hidden !== "undefined") {
 window.loading = function () {
   $("#load").css("visibility", "visible");
        var interval = setInterval(function(){
-       checkState();
-  if (state != 'hidden' && $("#results").children("header").length > 2) {
+  if ($("#results").children("header").length > 2) {
          document.getElementById('load').style.visibility="hidden";
          document.getElementById('main').style.visibility="visible";
 	 clearInterval(interval);
   }
  }, 1000);
 }
+setInterval(function() {
+	if($("#results").children("header").length > 2) {
+		nextSongs();
+	}
+}, 7000);
+$(".voteBtn").mouseover(function () {
+    nextSongs();
+	votes();
+});
  window.resetVotes = function () {
     localStorage.votedArray = "";
 	  if (localStorage.host) {
@@ -59,7 +67,7 @@ window.loading = function () {
      $.ajax({
          async: false,
          type: "POST",
-         url: "https://spartify.herokuapp.com/clearVotes",
+         url: "http://app.partymusic.co/clearVotes",
          dataType: "json",
          data: object,
          success: function (clearedData) {
@@ -126,7 +134,7 @@ window.updateFooter2 = function() {
            $.ajax({
                async: true,
                type: "POST",
-               url: "https://spartify.herokuapp.com/songRefresh",
+               url: "http://app.partymusic.co/songRefresh",
                dataType: "json",
                data: obj1,
                success: function (currentData) {
@@ -150,7 +158,7 @@ window.updateFooter = function() {
             $.ajax({
                async: false,
                type: "POST",
-               url: "https://spartify.herokuapp.com/songRefresh",
+               url: "http://app.partymusic.co/songRefresh",
                dataType: "json",
                data: obj1,
                success: function (currentData) {
@@ -200,7 +208,7 @@ try {
 	localStorage.cle = "false";
           if ($("#currentSong").children().length > 0) {
           var albumArtArray = [];
-            $("#all").hide();
+            //$("#all").hide();
             window.CT = function () {
             if (localStorage["userID"] && localStorage["Snapster"] && localStorage["explicit"]) {
                         $.ajax({
@@ -246,7 +254,7 @@ try {
                     }
         }
             do {
-                if (1 == 1 && localStorage["lastFM"]) {
+                if (localStorage["lastFM"]) {
                     $("#results").css("padding-top", "298px !important");
                     CT();
                     if (document.getElementById('filename').value == "Join a Party..." || document.getElementById('filename').value == "") {
@@ -354,7 +362,7 @@ try {
                                          /*$("#songLinkClick1").children("div")[0].style.display = "none";
                                          $("#songLinkClick1").children("div")[2].style.display = "none";*/
                                          $("#albumart").append("<div class='firstAA'><img style='display: inline-block; height: 244px;' src=" + $('[name="current"]')[0].attributes[0].value + " style=''/><div class='secondAA'><h1 class='albumInfo'>" + albumArtArray[2] + "</h1><h1 class='albumInfo'>" + albumArtArray[1] + "</h1><h1 class='albumInfo'>" + albumArtArray[0] + "</h1><h1 class='albumInfo'></div></div>");
-                                        $("#all").fadeIn(1000);
+                                        //$("#all").fadeIn(1000);
                                     }
                                    else if (localStorage["checkThis"] != "true" && $("#results").children("header").length < 2) {
                                           localStorage["checkThis"] = "true";
@@ -370,14 +378,9 @@ try {
                             currentTracks = [];
                         }
                     }
-                    else {
-                        // //console.log("blah");
-                       // upcomingSongs();
-                    }
-                   // votedSongs();
                 }
              }
-            while ($(".currentSong").text().toUpperCase().indexOf(localStorage["currentlyPlayingWC"]) == -1);
+             while ($(".currentSong").text().toUpperCase().indexOf(localStorage["currentlyPlayingWC"]) == -1);
             }
           }
         catch (exception) {
@@ -420,7 +423,7 @@ try {
     $.ajax({
         async: true,
         type: "POST",
-        url: "https://spartify.herokuapp.com/votes",
+        url: "http://app.partymusic.co/votes",
         dataType: "json",
         data: object,
         success: function (dataFirst) {
@@ -524,7 +527,7 @@ votedSongs();
            $.ajax({
                async: false,
                type: "POST",
-               url: "https://spartify.herokuapp.com/upVote",
+               url: "http://app.partymusic.co/upVote",
                dataType: "json",
                data: object,
                success: function (dataFirst) {
@@ -604,7 +607,7 @@ votedSongs();
              $.ajax({
                  async: true,
                  type: "POST",
-                 url: "https://spartify.herokuapp.com/downVote",
+                 url: "http://app.partymusic.co/downVote",
                  dataType: "json",
                  data: object,
                  success: function (dataFirst) {
@@ -770,6 +773,6 @@ votedSongs();
               // //console.log(exception);
           }
       }
+   loading();
   }
-	loading();
   });

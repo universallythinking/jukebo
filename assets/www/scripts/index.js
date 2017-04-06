@@ -13,7 +13,7 @@
                 console.log(url);
                 url = url.split("callback/");
                 url = url[1];
-                setTimeout(function () { window.open("index.html/" + url, "_blank"); }, 200);
+                //setTimeout(function () { window.open("index.html/" + url, "_blank"); }, 200);
             }
         });
 

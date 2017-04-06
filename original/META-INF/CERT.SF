@@ -1,0 +1,235 @@
+Signature-Version: 1.0
+SHA1-Digest-Manifest: 0e1UIyL7STL5Peubij68vz8Akxk=
+Created-By: 1.0 (Android)
+
+Name: assets/www/cordova-js-src/platform.js
+SHA1-Digest: WMSkc0u+fBApAiUe86W9D5KufB4=
+
+Name: res/drawable-port-ldpi-v4/screen.png
+SHA1-Digest: WM6SByhqg5Y7d19XtrKkl4neEp8=
+
+Name: assets/www/checks.png
+SHA1-Digest: NhKI1KoZrbC7179AHtxIn4V2v/U=
+
+Name: assets/www/scripts/platformOverrides.js
+SHA1-Digest: N/IxCalrvweVd1nMwSNpzVZUYoY=
+
+Name: assets/www/js/create.js
+SHA1-Digest: let4SbUTrQcd6rsMCvG0zd0uhr0=
+
+Name: assets/www/cordova.js
+SHA1-Digest: Vk8ZlawWbsxVZF+iEEuC+m6rPbM=
+
+Name: assets/www/mobileHost.html
+SHA1-Digest: 19LL8Dl/ccTqF2faoNIevS6eC98=
+
+Name: res/drawable-land-xhdpi-v4/screen.png
+SHA1-Digest: dqYXK/xT3zL430IOX7cP7CyVj1k=
+
+Name: assets/www/styles/loading.gif
+SHA1-Digest: Gn001z0BaAf0aSrzUclH1V6snqc=
+
+Name: assets/www/checkeredGreen.png
+SHA1-Digest: KSKdOZtR+qpT+9fn0xmLJhaqkrU=
+
+Name: assets/www/thank-you-host.html
+SHA1-Digest: /xhG40GdPeRIAOWWh2JhkYEZoM8=
+
+Name: assets/www/plugins/cordova-plugin-inappbrowser/www/inappbrowser.
+ js
+SHA1-Digest: ejWKlapgI12gKVHBlJFO3pIkIgk=
+
+Name: assets/www/plugins/cordova-plugin-urlhandler/www/android/LaunchM
+ yApp.js
+SHA1-Digest: OEWw6HSvEIINr82Wepf2A/Rsfck=
+
+Name: assets/www/findHost.html
+SHA1-Digest: c5x5ANcTNGeXrXsI60WtworimtA=
+
+Name: res/drawable-xxhdpi-v4/ic_action_remove.png
+SHA1-Digest: 9Utk4+aXETSKYQP8/+rs1q75Fn8=
+
+Name: assets/www/styles/jquery-ui.theme.css
+SHA1-Digest: 1SRQRT/o538vZSQEl2XsX7irKpI=
+
+Name: assets/www/cordova-js-src/plugin/android/app.js
+SHA1-Digest: DyNoltEL4yj1M0KRnp7t1ESe+Fo=
+
+Name: assets/www/index.html
+SHA1-Digest: VfnrUvf6P0Ejcdz8OFSxm91yyOM=
+
+Name: assets/www/scripts/index.js
+SHA1-Digest: UPEncVIc5v0zdG1zb4P0Ca6eQos=
+
+Name: assets/www/cordova-js-src/android/promptbasednativeapi.js
+SHA1-Digest: JIRUfP79NI5t078vJIq/tww/QEA=
+
+Name: res/drawable-xxhdpi-v4/ic_action_next_item.png
+SHA1-Digest: VCkMmGnd+0Re/Zh47VJcIYoV8xY=
+
+Name: assets/www/styles/bootstrap-theme.css
+SHA1-Digest: T2xO2sGODKMq5SDiL9ZqNRqLjZ4=
+
+Name: assets/www/plugins/com.borismus.webintent/www/webintent.js
+SHA1-Digest: 7JSfjOVzDqEYJ9H9nU+cHGDqmt4=
+
+Name: assets/www/turtle-angry.jpg
+SHA1-Digest: wih3/D4KRlgWzVw0ji2sshghABw=
+
+Name: assets/www/VSBuildInfo.xml
+SHA1-Digest: dyT9RfGnkKSvbXCZt2nz42nZ4+8=
+
+Name: assets/www/noImageAvailable.svg
+SHA1-Digest: pW05K3xfceI4O/Wl54sOW/AHkgQ=
+
+Name: assets/www/index2.html
+SHA1-Digest: pshSbrDSiwJU6aCRE6h2mULSPwg=
+
+Name: res/drawable-land-mdpi-v4/screen.png
+SHA1-Digest: nLBVHoMO6JHv6y8VTedyjf0MRus=
+
+Name: resources.arsc
+SHA1-Digest: ED2O9GkosHsR028Uz1lz8ND0+3U=
+
+Name: assets/www/css/index.css
+SHA1-Digest: AJS8jKjkKk24kVzCK1jNvNhcRQE=
+
+Name: assets/www/error.html
+SHA1-Digest: 4xlgii+BEuRTPAGGkJBc17Gyt/A=
+
+Name: res/drawable-mdpi-v4/ic_action_previous_item.png
+SHA1-Digest: V4xdGX7AIrCXT0Ii5jKxZlGz/aE=
+
+Name: assets/www/cordova_plugins.js
+SHA1-Digest: vrkKhJiOG1V4KMtjNapE98f5SZU=
+
+Name: assets/www/noimage.png
+SHA1-Digest: kkLcbN173Q77CQ9UJOxYjwRmUwM=
+
+Name: res/drawable-hdpi-v4/ic_action_previous_item.png
+SHA1-Digest: M1GfB2VNcCSehXeSgRHXvHxnf3E=
+
+Name: assets/www/styles/style.css
+SHA1-Digest: LE/nwsTln1Il7WQ58X7UqJxQG6g=
+
+Name: AndroidManifest.xml
+SHA1-Digest: Qv7l4upMbn6AxDtbb4SZqIwrKcU=
+
+Name: assets/www/js/jquery-ui.js
+SHA1-Digest: ICC6x8TntShwoTYdUL6kujw86i8=
+
+Name: assets/www/js/querystring.min.js
+SHA1-Digest: nYDy5YCVpoZbDjrlL9h+l0DiQK4=
+
+Name: assets/www/cordova-js-src/android/nativeapiprovider.js
+SHA1-Digest: 38WtpiAj5vmsHOuyTUe8kYOXH14=
+
+Name: res/drawable-land-hdpi-v4/screen.png
+SHA1-Digest: n3IlE11Q/L2LNMNjexCSVpKR7oE=
+
+Name: res/drawable-xhdpi-v4/ic_action_next_item.png
+SHA1-Digest: vId0P8iSrMw9IbpTh7JhARxcbHc=
+
+Name: assets/www/scripts/LaunchMyApp.js
+SHA1-Digest: W4kLfj4qxEcsq70kguSkLBPWA80=
+
+Name: res/xml/config.xml
+SHA1-Digest: Rd1QpkslLLjJt/rWkHjZvAClBnE=
+
+Name: assets/www/scripts/android2.3-jscompat.js
+SHA1-Digest: ReA4YM+yeHL7GJhCm8Nid4o7rNo=
+
+Name: res/drawable-mdpi-v4/ic_action_remove.png
+SHA1-Digest: Xm1eOMvIE8MEYmU9ms+pWE8RPv0=
+
+Name: assets/www/home.html
+SHA1-Digest: SU71fms4prL6PhL5BGkmyjA7NA0=
+
+Name: assets/www/songUpdate.html
+SHA1-Digest: bmE/o2VC26nR7n3Ko7TDBy4gdpo=
+
+Name: res/drawable-port-hdpi-v4/screen.png
+SHA1-Digest: i5ncUeKFZeoiQHerv4Ls87LjR3M=
+
+Name: assets/www/js/upcomingSongs.js
+SHA1-Digest: KhoeGFHP8enzt9B+4C7gJpTknhI=
+
+Name: assets/www/app.html
+SHA1-Digest: VZCL8kYNAa5Dpg+zHPiSe0OXnwU=
+
+Name: assets/www/js/timedJS.js
+SHA1-Digest: 2PVKigBaWN/xpg9e2PTS8501vaA=
+
+Name: res/drawable-mdpi-v4/ic_action_next_item.png
+SHA1-Digest: ZzISkM7wLyAw7HkVAX3PN79mc5w=
+
+Name: assets/www/index1.html
+SHA1-Digest: XORPnA7IomKHGPWc+187uc9PraQ=
+
+Name: assets/www/plugins/cordova-plugin-customurlscheme/www/android/La
+ unchMyApp.js
+SHA1-Digest: zQuGzlN8kGdjrhMZNLD4rsq45+U=
+
+Name: assets/www/styles/addMusic.svg
+SHA1-Digest: q2LI57sybHQhuFl5MUKbDAsQbcw=
+
+Name: assets/www/styles/styles.css
+SHA1-Digest: lCORx19g9PB4bla/67fvdqb+t5g=
+
+Name: res/drawable-xhdpi-v4/ic_action_remove.png
+SHA1-Digest: EhvoyAdNZQu17Um9w6vEbO8Q4yc=
+
+Name: res/drawable-land-ldpi-v4/screen.png
+SHA1-Digest: 1BkPn69TfojbzLJjZFk4OBskuQM=
+
+Name: res/drawable-port-xhdpi-v4/screen.png
+SHA1-Digest: iX73HRfgJv0QivcygF/6gSN4C/c=
+
+Name: res/drawable-hdpi-v4/ic_action_next_item.png
+SHA1-Digest: if3MCCMitp+rQkSVaFJf812cKSw=
+
+Name: assets/www/welcome.html
+SHA1-Digest: VwfkNhQfVZmiMu8560+FlNGGf+0=
+
+Name: res/drawable-xhdpi-v4/ic_action_previous_item.png
+SHA1-Digest: uG+ZFVmiP0FBZK49mU+oFNFtrpk=
+
+Name: assets/www/images/cordova.png
+SHA1-Digest: kMF5FCJR38NdQ96T3toSQfJkxn8=
+
+Name: assets/www/logout.html
+SHA1-Digest: bK/Bzyhd2sMcpb4Pk+dBkxmLztE=
+
+Name: assets/www/noImageAvailable.png
+SHA1-Digest: 3IwaExK+CIquO0OIuvHUnYsocLE=
+
+Name: res/drawable-mdpi-v4/icon.png
+SHA1-Digest: R5QCT7q5r4bx7akgHkicmHuP4fM=
+
+Name: assets/www/cordova-js-src/exec.js
+SHA1-Digest: zSlTRU8HxUISyyqDCPgSSJgcj+g=
+
+Name: assets/www/js/newSong.js
+SHA1-Digest: Y1HKHkVnt7/NhMhrEGtIb5apqb8=
+
+Name: assets/www/pixelatedGreen.png
+SHA1-Digest: tLLn7U3P1Z8qRa5FjuWMtbsnB3w=
+
+Name: assets/www/playlists.html
+SHA1-Digest: EZRos223gxvwZXlqGEahaa1H/pQ=
+
+Name: res/drawable-hdpi-v4/ic_action_remove.png
+SHA1-Digest: 4yiGHHAsMSLLJvngmTVlLn1qOUI=
+
+Name: res/drawable-port-mdpi-v4/screen.png
+SHA1-Digest: aCetbKdezBZETyS0048wX4lI2bc=
+
+Name: classes.dex
+SHA1-Digest: pDnTTwDtW+uqX/syvRxO60E0rR8=
+
+Name: assets/www/thank-you.html
+SHA1-Digest: VBXf5sgUTt//iPgaEC/IYNzOP8M=
+
+Name: res/drawable-xxhdpi-v4/ic_action_previous_item.png
+SHA1-Digest: MMQuqfVCNxhbSTH40JlRn05/z90=
+

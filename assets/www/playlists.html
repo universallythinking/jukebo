@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Jukebox</title>
+    <link rel="stylesheet" href="./styles/bootstrap-theme.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css">
+    <meta name="viewport" content="initial-scale=1 minimum-scale=1 maximum-scale=1 user-scalable=0" />
+    <script src="file:///android_asset/www/js/create.js"></script>
+<script src="../bower_components/ng-cordova-oauth/dist/ng-cordova-oauth.min.js"></script><script src="js/jquery-ui.js" onload="window.$ = window.jQuery = module.exports;"></script>
+    <style>#html {
+    zoom: 150%;
+    font-weight: 200;
+    min-height: 150vh;
+    background: -webkit-radial-gradient(0% 100%, ellipse cover, rgba(104,128,138,.4) 10%,rgba(138,114,76,0) 40%), linear-gradient(to bottom, rgba(57,173,219,.25) 0%,rgba(42,60,87,.4) 100%), linear-gradient(135deg, #73de8f 0%,#000000 100%);
+}
+.songLinkClick {
+  font-weight: 200;
+}
+#playlistContainer {
+  color: white;
+}
+.inline {
+  width: 22%;
+}
+.charlie {
+    width: 100%;
+}
+.images {
+  width: 100%;
+  border: none;
+  outline: none;
+}
+.row {
+    width: 100%;
+    float: none;
+    text-align: center;
+    margin: auto;
+}
+.half {
+  width: 44%;
+}
+.fourth {
+  width: 88%;
+}
+.playlists {
+    padding: 25px 25px 0 25px;
+    display: inline-block;
+    height: auto;
+}
+h5 {
+    overflow: hidden;
+    height: 15px;
+}
+div#playlistContainer {
+    padding-left: 10%;
+    min-height: 150vh;
+}
+    </style>
+    <script>
+        localStorage.setItem("host", true);
+        localStorage.setItem("allowed", true);
+    </script>
+</head>
+
+<body style="" id="html">
+  <div style="width: auto; display: none !important;" id="dialogConfirm" title="Good Choice!">
+    <p style="color: white;">Are You Sure You Want To Use This Playlist?.</p>
+    <div style="width: 67.9px; margin: auto;">
+          <button onclick="confirmPrompt();" id="singlebutton" type="submit" name="closeButton" class="btn btn-primary">I'm Sure!</button>
+    </div>
+  </div>
+    <script>
+        window.open("home.html", "_self");
+  </script>
+
+    </body>
+</html>

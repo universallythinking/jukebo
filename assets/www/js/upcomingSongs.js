@@ -1,5 +1,5 @@
-$(document).ready(function () {
-  if (!document.hidden || document.hidden) {
+$("document").ready(function () {
+  if (!document.hidden) {
     if (!localStorage.votedArray) {
 	    localStorage.setItem("votedArray", " ");
     }
@@ -49,15 +49,7 @@ window.loading = function () {
   }
  }, 1000);
 }
-setInterval(function() {
-	if($("#results").children("header").length > 2) {
-		nextSongs();
-	}
-}, 7000);
-$(".voteBtn").mouseover(function () {
-    nextSongs();
-	votes();
-});
+
  window.resetVotes = function () {
     localStorage.votedArray = "";
 	  if (localStorage.host) {
@@ -67,7 +59,7 @@ $(".voteBtn").mouseover(function () {
      $.ajax({
          async: false,
          type: "POST",
-         url: "https://spartify.herokuapp.com/clearVotes",
+         url: "http://spartify.herokuapp.com/clearVotes",
          dataType: "json",
          data: object,
          success: function (clearedData) {
@@ -134,7 +126,7 @@ window.updateFooter2 = function() {
            $.ajax({
                async: true,
                type: "POST",
-               url: "https://spartify.herokuapp.com/songRefresh",
+               url: "http://spartify.herokuapp.com/songRefresh",
                dataType: "json",
                data: obj1,
                success: function (currentData) {
@@ -158,7 +150,7 @@ window.updateFooter = function() {
             $.ajax({
                async: false,
                type: "POST",
-               url: "https://spartify.herokuapp.com/songRefresh",
+               url: "http://spartify.herokuapp.com/songRefresh",
                dataType: "json",
                data: obj1,
                success: function (currentData) {
@@ -186,10 +178,13 @@ window.updateFooter = function() {
  setInterval(function () {
 	 if (localStorage.lastFM.toUpperCase() == localStorage.party.toUpperCase()) {
 	 updateFooter();
+   CT();
+		 votes();
 	 }
 	 else {
          updateFooter();
-       //  loadFooter();
+       CT();
+		 votes();
 	 }
  }, 2500);
     window.coverPhoto = function() {
@@ -202,6 +197,60 @@ try {
         // //console.log(exception);
         }
     }
+    if (localStorage.CT) {
+	localStorage.CT1 = localStorage.CT.toUpperCase();
+    }
+    else {
+    	localStorage.CT1 = "";
+    }
+    window.CT = function () {
+    if (localStorage["userID"] && localStorage["Snapster"] && localStorage["explicit"]) {
+                $.ajax({
+                    async: false,
+                    type: "GET",
+                    url: "https://api.spotify.com/v1/users/" + localStorage['userID'] + "/playlists/" + localStorage['Snapster'] + "/tracks",
+                    headers: { 'Authorization': 'Bearer ' + access_token },
+                    dataType: "json",
+                    data: "formdata",
+                    success: function (trackData) {
+                      currentTracks = [];
+                      currentTracks2 = [];
+                        for (var i = 0; i < trackData.items.length; i++) {
+                          currentTracks[i] = trackData.items[i].track.name.toUpperCase();
+                          currentTracks2[i] = trackData.items[i].track.name;
+                        }
+                        localStorage["CT"] = currentTracks.toString().toUpperCase();
+                        localStorage["totalSongs"] = currentTracks.length;
+                        localStorage["currentlyPlayingWC"] = localStorage["currentlyPlaying"].replace(/,/g, '');
+                        if (currentTracks.indexOf(localStorage["currentlyPlayingWC"]) != -1) {
+                            localStorage["currentTrack"] = currentTracks.indexOf(localStorage["currentlyPlayingWC"]);
+                        }
+                        else {
+                            temporaryTrack = localStorage["currentlyPlayingWC"].substr(0, 7);
+                            for (var i = 0; i < currentTracks.length; i++) {
+                                if (currentTracks[i].substr(0, 7).indexOf(temporaryTrack) > -1) {
+                                    localStorage["currentTrack"] = currentTracks.indexOf(currentTracks[i]);
+                                }
+                            }
+                            nextSongs();
+                        }
+                        for (var i = 0; i < currentTracks.length; i++) {
+                            if (localStorage["currentTrack"] >= 4) {
+                                localStorage["offsetNumber"] = localStorage["currentTrack"];
+                            }
+                            else {
+                                localStorage["offsetNumber"] = localStorage["currentTrack"];
+                            }
+                            currentTracks = [];
+                        }
+			    if (localStorage.CT !== localStorage.CT1) {
+				localStorage.CT1 = localStorage.CT;
+				nextSongs();    
+			    }
+                    }
+                });
+            }
+}
    window.nextSongs = function () {
         try {
 	CV();
@@ -209,50 +258,6 @@ try {
           if ($("#currentSong").children().length > 0) {
           var albumArtArray = [];
             //$("#all").hide();
-            window.CT = function () {
-            if (localStorage["userID"] && localStorage["Snapster"] && localStorage["explicit"]) {
-                        $.ajax({
-                            async: false,
-                            type: "GET",
-                            url: "https://api.spotify.com/v1/users/" + localStorage['userID'] + "/playlists/" + localStorage['Snapster'] + "/tracks",
-                            headers: { 'Authorization': 'Bearer ' + access_token },
-                            dataType: "json",
-                            data: "formdata",
-                            success: function (trackData) {
-                              currentTracks = [];
-                              currentTracks2 = [];
-                                for (var i = 0; i < trackData.items.length; i++) {
-                                  currentTracks[i] = trackData.items[i].track.name.toUpperCase();
-                                  currentTracks2[i] = trackData.items[i].track.name;
-                                }
-                                localStorage["CT"] = currentTracks.toString().toUpperCase();
-                                localStorage["CT1"] = currentTracks2.toString();
-                                localStorage["totalSongs"] = currentTracks.length;
-                                localStorage["currentlyPlayingWC"] = localStorage["currentlyPlaying"].replace(/,/g, '');
-                                if (currentTracks.indexOf(localStorage["currentlyPlayingWC"]) != -1) {
-                                    localStorage["currentTrack"] = currentTracks.indexOf(localStorage["currentlyPlayingWC"]);
-                                }
-                                else {
-                                    temporaryTrack = localStorage["currentlyPlayingWC"].substr(0, 7);
-                                    for (var i = 0; i < currentTracks.length; i++) {
-                                        if (currentTracks[i].substr(0, 7).indexOf(temporaryTrack) > -1) {
-                                            localStorage["currentTrack"] = currentTracks.indexOf(currentTracks[i]);
-                                        }
-                                    }
-                                }
-                                for (var i = 0; i < currentTracks.length; i++) {
-                                    if (localStorage["currentTrack"] >= 4) {
-                                        localStorage["offsetNumber"] = localStorage["currentTrack"];
-                                    }
-                                    else {
-                                        localStorage["offsetNumber"] = localStorage["currentTrack"];
-                                    }
-                                    currentTracks = [];
-                                }
-                            }
-                        });
-                    }
-        }
             do {
                 if (localStorage["lastFM"]) {
                     $("#results").css("padding-top", "298px !important");
@@ -303,7 +308,7 @@ try {
                                                 $("#results").append("<header title='" + currentPLData.items[0].track.id + "' style='color: white; pointer-events: none;' id='songLinkClick" + 0 + "'" + "class='songLinkClick played'> <div onclick='decrement(" + 0 + ", 1);' class='voteBtn'> <a>-</a> </div> <div> <p>" + currentPLData.items[0].track.artists[0].name + "</p> <p>" + currentPLData.items[0].track.name + "</p> </div> <div onclick='increment(" + 0 + ", 0);' class='voteBtn'> <a>+</a> </div> </header>");
                                             }
                                             finally {
-                                               // //console.log("Songs Have Been Loaded");
+						    // //console.log("Songs Have Been Loaded");
                                             }
                                         }
                                             else {
@@ -340,7 +345,6 @@ try {
                                                 albumArtArray[2] = currentPLData.items[0].track.artists[0].name.toString();
                                             }
                                             finally {
-                                               // //console.log("Songs Have Been Loaded");
                                             }
                                         }
                                             else {
@@ -354,6 +358,7 @@ try {
                                             }
                                         }
                                     if ($("#results").children("header").length > 1) {
+					 votes();
                                          document.getElementById("songLinkClick" + 0).style.color = "black";
                                          $("#songLinkClick0").attr("name", "current");
                                          $("[name='current']").css("id")
@@ -372,7 +377,6 @@ try {
                                        }
                                    }
                                   //  votedSongs();
-
                             });
                             playlists = [];
                             currentTracks = [];
@@ -382,10 +386,12 @@ try {
              }
              while ($(".currentSong").text().toUpperCase().indexOf(localStorage["currentlyPlayingWC"]) == -1);
             }
+            votes();
           }
         catch (exception) {
             // //console.log(exception);
         }
+
     }
    for (var i = 0; i < $("#results").children("header").length; i++) {
       $("#songLinkClick" + i + " div:nth-child(3)").on('click touchstart', function() {
@@ -423,7 +429,7 @@ try {
     $.ajax({
         async: true,
         type: "POST",
-        url: "https://spartify.herokuapp.com/votes",
+        url: "http://spartify.herokuapp.com/votes",
         dataType: "json",
         data: object,
         success: function (dataFirst) {
@@ -527,7 +533,7 @@ votedSongs();
            $.ajax({
                async: false,
                type: "POST",
-               url: "https://spartify.herokuapp.com/upVote",
+               url: "http://spartify.herokuapp.com/upVote",
                dataType: "json",
                data: object,
                success: function (dataFirst) {
@@ -607,7 +613,7 @@ votedSongs();
              $.ajax({
                  async: true,
                  type: "POST",
-                 url: "https://spartify.herokuapp.com/downVote",
+                 url: "http://spartify.herokuapp.com/downVote",
                  dataType: "json",
                  data: object,
                  success: function (dataFirst) {

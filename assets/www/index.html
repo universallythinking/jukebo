@@ -112,6 +112,9 @@ a#nameify {
   <script>
       $(document).ready(function () {
 	      $("#load").onclick(function() {
+		      loading();
+	      });
+	      $("#load").dblclick(function() {
 		      localStorage.clear();
 	      });
           var access_token;

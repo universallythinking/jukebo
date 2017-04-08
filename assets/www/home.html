@@ -119,7 +119,7 @@ form#host {
               localStorage.clear();
                 setInterval(function () {
                     if (localStorage.current_token) {
-                      location.href = "file:///android_asset/www/home.html"; //window.open("index.html", "_self");
+                      location.href = "file:///android_asset/www/index.html"; //window.open("index.html", "_self");
                     }
                 }, 1000);
 
@@ -174,9 +174,6 @@ form#host {
                 });
                 $("#guesth1").on("click", function () {
                     guest();
-                });
-                $("#guestParty").on("click", function () {
-                    findParty();
                 });
                 $("#partyID").keypress(function (event) {
                     if (event.which === 13) {

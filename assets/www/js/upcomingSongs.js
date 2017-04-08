@@ -1,4 +1,4 @@
-$("document").ready(function () {
+$(document).ready(function () {
   if (!document.hidden) {
     if (!localStorage.votedArray) {
 	    localStorage.setItem("votedArray", " ");

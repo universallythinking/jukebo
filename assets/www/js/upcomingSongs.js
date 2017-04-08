@@ -1,8 +1,5 @@
-$(document).ready(function () {
+$("document").ready(function () {
   if (!document.hidden) {
-    if (!localStorage.votedArray) {
-	    localStorage.setItem("votedArray", " ");
-    }
     $('#results').empty;
     var playlists = [];
     var currentTracks = [];
@@ -43,6 +40,7 @@ window.loading = function () {
   $("#load").css("visibility", "visible");
        var interval = setInterval(function(){
   if ($("#results").children("header").length > 2) {
+	  nextSongs();
          document.getElementById('load').style.visibility="hidden";
          document.getElementById('main').style.visibility="visible";
 	 clearInterval(interval);
@@ -51,7 +49,6 @@ window.loading = function () {
 }
 
  window.resetVotes = function () {
-    localStorage.votedArray = "";
 	  if (localStorage.host) {
     localStorage.setItem("STOP", "true");
     var object = {};
@@ -187,6 +184,7 @@ window.updateFooter = function() {
 		 votes();
 	 }
  }, 2500);
+setInterval(function() { votedSongs(); }, 500);
     window.coverPhoto = function() {
 try {
         if ($('#results').children('header').length > 1) {
@@ -455,9 +453,9 @@ try {
                  $("#songLinkClick" + j + " div:nth-child(3) a").text("+X");
                  $("#songLinkClick" + j + " div:nth-child(1) a").text("+X");
                }
-               else if (downAdmin >= 1 && upAdmin < downAdmin) {
-                 $("#songLinkClick" + j + " div:nth-child(3) a").text("-X");
-                 $("#songLinkClick" + j + " div:nth-child(1) a").text("-X");
+               else if (downAdmin >= 1 && a < 0) {
+                 $("#songLinkClick" + j + " div:nth-child(3) a").text(a);
+                 $("#songLinkClick" + j + " div:nth-child(1) a").text("-");
                }
                else if (a == 0) {
                  $("#songLinkClick" + j + " div:nth-child(3) a").text("+");

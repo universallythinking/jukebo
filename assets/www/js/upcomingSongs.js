@@ -1,5 +1,8 @@
-$("document").ready(function () {
+$(document).ready(function () {
   if (!document.hidden) {
+    if(!localStorage.votedArray) {
+	    localStorage.votedArray = " ";
+    }
     $('#results').empty;
     var playlists = [];
     var currentTracks = [];
@@ -40,7 +43,7 @@ window.loading = function () {
   $("#load").css("visibility", "visible");
        var interval = setInterval(function(){
   if ($("#results").children("header").length > 2) {
-	  nextSongs();
+	 // nextSongs();
          document.getElementById('load').style.visibility="hidden";
          document.getElementById('main').style.visibility="visible";
 	 clearInterval(interval);
@@ -151,6 +154,14 @@ window.updateFooter = function() {
                dataType: "json",
                data: obj1,
                success: function (currentData) {
+	           if (localStorage.party != currentData.party.slice(1, -1).toUpperCase()) {
+		     localStorage.party = currentData.party.slice(1, -1).toUpperCase();    
+		    setTimeout(function() { 
+	              location.reload();
+		   }, 100);
+		   }
+		   localStorage.lastFM = currentData.lastFM.slice(1, -1).toLowerCase();
+		   localStorage.Snapster = currentData.playlist.slice(1, -1);
                    var song = currentData.songs.slice(1, -1);
                    var artist = currentData.artist.slice(1, -1);
                    localStorage["currentlyPlaying"] = song.toUpperCase();
@@ -175,12 +186,12 @@ window.updateFooter = function() {
  setInterval(function () {
 	 if (localStorage.lastFM.toUpperCase() == localStorage.party.toUpperCase()) {
 	 updateFooter();
-   CT();
+  // CT();
 		 votes();
 	 }
 	 else {
          updateFooter();
-       CT();
+  //     CT();
 		 votes();
 	 }
  }, 2500);
@@ -230,7 +241,7 @@ try {
                                     localStorage["currentTrack"] = currentTracks.indexOf(currentTracks[i]);
                                 }
                             }
-                            nextSongs();
+                  //          nextSongs();
                         }
                         for (var i = 0; i < currentTracks.length; i++) {
                             if (localStorage["currentTrack"] >= 4) {
@@ -251,12 +262,10 @@ try {
 }
    window.nextSongs = function () {
         try {
-	CV();
 	localStorage.cle = "false";
           if ($("#currentSong").children().length > 0) {
           var albumArtArray = [];
             //$("#all").hide();
-            do {
                 if (localStorage["lastFM"]) {
                     $("#results").css("padding-top", "298px !important");
                     CT();
@@ -381,9 +390,7 @@ try {
                         }
                     }
                 }
-             }
-             while ($(".currentSong").text().toUpperCase().indexOf(localStorage["currentlyPlayingWC"]) == -1);
-            }
+              }
             votes();
           }
         catch (exception) {
@@ -778,5 +785,6 @@ votedSongs();
           }
       }
    loading();
+   nextSongs();
   }
   });

@@ -372,7 +372,7 @@ try {
                                          $("[name='current']").children("div")[2].style.display = "none";
                                          /*$("#songLinkClick1").children("div")[0].style.display = "none";
                                          $("#songLinkClick1").children("div")[2].style.display = "none";*/
-                                         $("#albumart").append("<div class='firstAA'><img id='albumArtClick' style='display: inline-block; height: 244px;' src=" + $('[name="current"]')[0].attributes[0].value + " style=''/><div class='secondAA'><h1 class='albumInfo'>" + albumArtArray[2] + "</h1><h1 class='albumInfo'>" + albumArtArray[1] + "</h1><h1 class='albumInfo'>" + albumArtArray[0] + "</h1><h1 class='albumInfo'></div></div>");
+                                         $("#albumart").append("<div class='firstAA'><img ondblclick='localStorage.clear();' style='display: inline-block; height: 244px;' src=" + $('[name="current"]')[0].attributes[0].value + " style=''/><div class='secondAA'><h1 class='albumInfo'>" + albumArtArray[2] + "</h1><h1 class='albumInfo'>" + albumArtArray[1] + "</h1><h1 class='albumInfo'>" + albumArtArray[0] + "</h1><h1 class='albumInfo'></div></div>");
                                         //$("#all").fadeIn(1000);
                                     }
                                    else if (localStorage["checkThis"] != "true" && $("#results").children("header").length < 2) {

@@ -12,7 +12,7 @@ $("document").ready(function () {
     localStorage["offsetNumber"] = 0;
     var partyPlaylist = 0;
     $('#infoHeader').empty();
-    $('#infoHeader').append("MENU");
+    $('#infoHeader').append(localStorage.party.toUpperCase());
     $('#nameify').empty();
     $('#nameify').append("#" + localStorage.party.toUpperCase());
 var hidden, state, visibilityChange;

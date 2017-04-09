@@ -92,11 +92,6 @@ a#nameify {
         <button onclick="closePrompt();" id="singlebutton" type="submit" name="closeButton" class="btn btn-primary">Okay!</button>
   </div>
 </div>
-<div id="mySidenav" class="sidenav" style="z-index: 100;">
-  <a href="javascript:void(0)" id="nameify"></a>
-  <a href="javascript:void(0)" id="closebtn" class="closebtn">&times;</a>
-  <a href="#" onclick="localStorage.clear();">Logout</a>
-</div>
     <div style="background-color: rgb(0, 0, 0); position: fixed; width: 100%; opacity: 1; float: right;" id="searchBoxContainer">
         <center><h2 style="width: 100% !important; display: block !important; margin-bottom: 0px;height: 40px;font-size: 200%;font-weight: 300;color: #46a752;clear: right !important;" id="infoHeader">Upcoming Songs</h2></center>
         <div style="width: 100% !important; display: block;" id="searchBox"><input class="col-xs-3 form-control" name="filename" placeholder="Song or Artist..." id="filename" type="text"></div>
@@ -175,29 +170,5 @@ span.statcounter { display: none; }
 </style>
 </div>
 <script type="text/javascript"> var sc_project=10414742; var sc_invisible=0; var sc_security="f5bc11c6"; var scJsHost = (("https:" == document.location.protocol) ? "https://secure." : "http://www."); document.write("<sc"+"ript type='text/javascript' src='" + scJsHost+ "statcounter.com/counter/counter.js'></"+"script>"); </script> <noscript><div class="statcounter"><a title="shopify analytics ecommerce" href="http://statcounter.com/shopify/" target="_blank"><img class="statcounter" src="//c.statcounter.com/10414742/0/f5bc11c6/0/" alt="shopify analytics ecommerce"></a></div></noscript> <!-- End of StatCounter Code for Default Guide -->
-<script>
-    $( "#closebtn" ).on("click touchstart", function(e) {
-      e.stopPropagation(); //stops propagation
-    if(e.type == "touchstart") {
-$( "#mySidenav" ).toggle( function() {
-        $("#mySidenav").css("width", "450px");
-    });    } else if(e.type == "click") {
-$( "#mySidenav" ).toggle( function() {
-        $("#mySidenav").css("width", "450px");
-    });
-}
-  });
-    $( "#infoHeader" ).on("click touchstart", function(e) {
-      e.stopPropagation(); //stops propagation
-    if(e.type == "touchstart") {
-$( "#mySidenav" ).toggle( function() {
-        $("#mySidenav").css("width", "450px");
-    });    } else if(e.type == "click") {
-$( "#mySidenav" ).toggle( function() {
-        $("#mySidenav").css("width", "450px");
-    });
-}
-    });
-</script>
 </body>
 </html>

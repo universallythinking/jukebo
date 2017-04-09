@@ -784,7 +784,7 @@ votedSongs();
               // //console.log(exception);
           }
       }
-   loading();
+   //loading();
    nextSongs();
   }
   });

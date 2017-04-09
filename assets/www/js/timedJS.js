@@ -1,6 +1,7 @@
 $(document).ready(function () {
 var touchtime = 0;
 $('#albumArtClick').on('click', function() {
+    alert("clicked");
     if(touchtime == 0) {
         //set first click
         touchtime = new Date().getTime();
@@ -10,6 +11,7 @@ $('#albumArtClick').on('click', function() {
             //double click occurred
             localStorage.clear();
             touchtime = 0;
+            location.href = "file://android_asset/www/home.html";
         } else {
             //not a double click so set as a new first click
             touchtime = new Date().getTime();

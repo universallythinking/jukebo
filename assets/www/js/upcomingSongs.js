@@ -1,8 +1,5 @@
-$(document).ready(function () {
+$("document").ready(function () {
   if (!document.hidden) {
-    if(!localStorage.votedArray) {
-	    localStorage.votedArray = " ";
-    }
     $('#results').empty;
     var playlists = [];
     var currentTracks = [];
@@ -43,7 +40,7 @@ window.loading = function () {
   $("#load").css("visibility", "visible");
        var interval = setInterval(function(){
   if ($("#results").children("header").length > 2) {
-	 // nextSongs();
+	  nextSongs();
          document.getElementById('load').style.visibility="hidden";
          document.getElementById('main').style.visibility="visible";
 	 clearInterval(interval);
@@ -186,12 +183,12 @@ window.updateFooter = function() {
  setInterval(function () {
 	 if (localStorage.lastFM.toUpperCase() == localStorage.party.toUpperCase()) {
 	 updateFooter();
-  // CT();
+   CT();
 		 votes();
 	 }
 	 else {
          updateFooter();
-  //     CT();
+       CT();
 		 votes();
 	 }
  }, 2500);
@@ -241,7 +238,7 @@ try {
                                     localStorage["currentTrack"] = currentTracks.indexOf(currentTracks[i]);
                                 }
                             }
-                  //          nextSongs();
+                            nextSongs();
                         }
                         for (var i = 0; i < currentTracks.length; i++) {
                             if (localStorage["currentTrack"] >= 4) {
@@ -262,10 +259,12 @@ try {
 }
    window.nextSongs = function () {
         try {
+	CV();
 	localStorage.cle = "false";
           if ($("#currentSong").children().length > 0) {
           var albumArtArray = [];
             //$("#all").hide();
+            do {
                 if (localStorage["lastFM"]) {
                     $("#results").css("padding-top", "298px !important");
                     CT();
@@ -390,7 +389,9 @@ try {
                         }
                     }
                 }
-              }
+             }
+             while ($(".currentSong").text().toUpperCase().indexOf(localStorage["currentlyPlayingWC"]) == -1);
+            }
             votes();
           }
         catch (exception) {
@@ -784,7 +785,6 @@ votedSongs();
               // //console.log(exception);
           }
       }
-   //loading();
-   nextSongs();
+   loading();
   }
   });

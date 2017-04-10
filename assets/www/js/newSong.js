@@ -96,7 +96,7 @@ resetVotes();
 else if (document.getElementById('filename').value.toLowerCase() == "temp.") {
 localStorage.setItem("temp", true);
 }
-else if (document.getElementById('filename').value.toLowerCase() == "i really want unlimited voting." || document.getElementById('filename').value.toLowerCase() == "uv.") {
+else if (document.getElementById('filename').value.toLowerCase() == localStorage.password + "." || document.getElementById('filename').value.toLowerCase() == "i really want unlimited voting." || document.getElementById('filename').value.toLowerCase() == "uv.") {
 resetVotes(1);
                 localStorage.setItem("uv", "true");
                 $("#filename").val("");

@@ -1,5 +1,8 @@
-$("document").ready(function () {
+$(document).ready(function () {
   if (!document.hidden) {
+    if(!localStorage.votedArray) {
+	    localStorage.votedArray = " ";
+    }
     $('#results').empty;
     var playlists = [];
     var currentTracks = [];
@@ -40,14 +43,13 @@ window.loading = function () {
   $("#load").css("visibility", "visible");
        var interval = setInterval(function(){
   if ($("#results").children("header").length > 2) {
-	  nextSongs();
+	  // nextSongs();
          document.getElementById('load').style.visibility="hidden";
          document.getElementById('main').style.visibility="visible";
 	 clearInterval(interval);
   }
  }, 1000);
 }
-
  window.resetVotes = function () {
 	  if (localStorage.host) {
     localStorage.setItem("STOP", "true");
@@ -188,12 +190,12 @@ window.updateFooter = function() {
  setInterval(function () {
 	 if (localStorage.lastFM.toUpperCase() == localStorage.party.toUpperCase()) {
 	 updateFooter();
-   CT();
+         CT();
 		 votes();
 	 }
 	 else {
          updateFooter();
-       CT();
+         CT();
 		 votes();
 	 }
  }, 2500);
@@ -243,7 +245,7 @@ try {
                                     localStorage["currentTrack"] = currentTracks.indexOf(currentTracks[i]);
                                 }
                             }
-                            nextSongs();
+                  //          nextSongs();
                         }
                         for (var i = 0; i < currentTracks.length; i++) {
                             if (localStorage["currentTrack"] >= 4) {
@@ -264,12 +266,10 @@ try {
 }
    window.nextSongs = function () {
         try {
-	CV();
 	localStorage.cle = "false";
           if ($("#currentSong").children().length > 0) {
           var albumArtArray = [];
             //$("#all").hide();
-            do {
                 if (localStorage["lastFM"]) {
                     $("#results").css("padding-top", "298px !important");
                     CT();
@@ -394,9 +394,7 @@ try {
                         }
                     }
                 }
-             }
-             while ($(".currentSong").text().toUpperCase().indexOf(localStorage["currentlyPlayingWC"]) == -1);
-            }
+              }
             votes();
           }
         catch (exception) {
@@ -433,6 +431,11 @@ try {
       });
    }
    window.votes = function () {
+	   var a = 0;
+               var up = 0;
+                 var down = 0;
+                 var upAdmin = 1;
+                 var downAdmin  = 1;
    var decrementArray = [];
    var incrementArray = [];
    var object = {};
@@ -451,12 +454,7 @@ try {
 		 if (songNames.length >= 11) {
 		    songNames = songNames.slice(0, 10);
 		 }
-		var a = 0;
-               var up = 0;
-                 var down = 0;
-                 var upAdmin = 1;
-                 var downAdmin  = 1;
-                  up = localStorage.voteTotals.split("+" + songNames).length;
+		  up = localStorage.voteTotals.split("+" + songNames).length;
                   down = localStorage.voteTotals.split("-" + songNames).length;
                   upAdmin = localStorage.voteTotals.split("++" + songNames).length;
                   downAdmin = localStorage.voteTotals.split("--" + songNames).length;
@@ -791,5 +789,7 @@ votedSongs();
           }
       }
    loading();
+   votes();
+   setTimeout(function() { nextSongs(); }, 5000);
   }
   });

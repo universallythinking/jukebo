@@ -157,8 +157,13 @@ window.updateFooter = function() {
 	              location.reload();
 		   }, 100);
 		   }
+		   if (localStorage.Snapster != currentData.playlist.slice(1, -1)) {
+		     localStorage.Snapster = currentData.playlist.slice(1, -1);    
+		    setTimeout(function() { 
+	              location.reload();
+		   }, 100);
+		   }
 		   localStorage.lastFM = currentData.lastFM.slice(1, -1).toLowerCase();
-		   localStorage.Snapster = currentData.playlist.slice(1, -1);
                    var song = currentData.songs.slice(1, -1);
                    var artist = currentData.artist.slice(1, -1);
                    localStorage["currentlyPlaying"] = song.toUpperCase();

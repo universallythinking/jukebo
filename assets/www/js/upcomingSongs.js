@@ -16,6 +16,7 @@ $(document).ready(function () {
     var partyPlaylist = 0;
     $('#infoHeader').empty();
     $('#infoHeader').append(localStorage.party.toUpperCase());
+    document.title = localStorage.party.toUpperCase();
     $('#nameify').empty();
     $('#nameify').append("#" + localStorage.party.toUpperCase());
 var hidden, state, visibilityChange;
@@ -191,12 +192,12 @@ window.updateFooter = function() {
 	 if (localStorage.lastFM.toUpperCase() == localStorage.party.toUpperCase()) {
 	 updateFooter();
          CT();
-		 votes();
+if ($("#results").children("header").length > 2) { votes(); }
 	 }
 	 else {
          updateFooter();
          CT();
-		 votes();
+	if ($("#results").children("header").length > 2) { votes(); }
 	 }
  }, 2500);
 setInterval(function() { votedSongs(); }, 500);
@@ -368,7 +369,7 @@ try {
                                             }
                                             }
                                         }
-                                    if ($("#results").children("header").length > 1) {
+                                    if ($("#results").children("header").length > 2) {
 					 votes();
                                          document.getElementById("songLinkClick" + 0).style.color = "black";
                                          $("#songLinkClick0").attr("name", "current");
@@ -454,6 +455,7 @@ try {
 		 if (songNames.length >= 11) {
 		    songNames = songNames.slice(0, 10);
 		 }
+		 if (songNames.length > 2) {
 		  up = localStorage.voteTotals.split("+" + songNames).length;
                   down = localStorage.voteTotals.split("-" + songNames).length;
                   upAdmin = localStorage.voteTotals.split("++" + songNames).length;
@@ -481,10 +483,10 @@ try {
                  $("#songLinkClick" + j + " div:nth-child(3) a").text("+");
                }
                }
+	       }
    }
    });
    }
-votes();
 votedSongs();
     nextSongs();
     window.increment = function (i, l) {
@@ -789,7 +791,7 @@ votedSongs();
           }
       }
    loading();
-   votes();
-   setTimeout(function() { nextSongs(); }, 5000);
+	  votes();
+   setTimeout(function() {  nextSongs(); }, 4000);
   }
   });

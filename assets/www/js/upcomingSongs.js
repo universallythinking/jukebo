@@ -237,7 +237,7 @@ votedSongs();
         });
     }
     window.sortVotes = function() {
-	    votedSongs();
+	if (!localStorage.uv) { votedSongs(); }
       for (var j = 1; j < $("#results").children("header").length - 1; j++) {
           var songNames = $("#songLinkClick" + j).attr("title");
           if (songNames.length >= 11) {

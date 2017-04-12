@@ -90,7 +90,6 @@ window.updateFooter = function() {
 	 updateFooter();
          CT();
  }, 2500);
-   setInterval(function() { votedSongs(); }, 500);
     if (localStorage.CT) {
 	    localStorage.CT1 = localStorage.CT.toUpperCase();
     }

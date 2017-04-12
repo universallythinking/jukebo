@@ -198,7 +198,27 @@ for (var i = 0; i < $("#results").children("header").length; i++) {
       decrement(i);
   });
 }
-
+window.votedSongs = function () {
+    if (document.hasFocus() || localStorage.votedArray) {
+        for (i = 1; i < $("#results").children("header").length - 1; i++) {
+            if ($("#results").children("header").length > 0) {
+              if (localStorage.currentTrack == 0 && $("#songLinkClick" + i + " div:nth-child(3) a").text() == "+" || $("#songLinkClick" + i + " div:nth-child(1) a").text() == "-") {
+                  $("#songLinkClick" + i + " div:nth-child(1) a").css("color", "white");
+                  $("#songLinkClick" + i + " div:nth-child(3) a").css("color", "white");
+                  $("#songLinkClick" + i + " div:nth-child(1)").css("pointer-events", "all !important");
+                  $("#songLinkClick" + i + " div:nth-child(3)").css("pointer-events", "all !important");
+                  }
+            if ((document.getElementById('filename').value == "" || document.getElementById('filename').value == "Song or Artist...") && localStorage["votedArray"].indexOf($("#songLinkClick" + i).attr("title")) != -1) {
+                $("#songLinkClick" + i)[0].children[2].children[0].style.color = "black";
+                $("#songLinkClick" + i)[0].children[0].children[0].style.color = "black";
+                $("#songLinkClick" + i)[0].children[0].style.pointerEvents = "none";
+               $("#songLinkClick" + i)[0].children[2].style.pointerEvents = "none";
+              }
+            }
+        }
+    }
+}
+votedSongs();
    window.votes = function() {
         decrementArray = [];
         incrementArray = [];
@@ -217,6 +237,7 @@ for (var i = 0; i < $("#results").children("header").length; i++) {
         });
     }
     window.sortVotes = function() {
+	    votedSongs();
       for (var j = 1; j < $("#results").children("header").length - 1; j++) {
           var songNames = $("#songLinkClick" + j).attr("title");
           if (songNames.length >= 11) {
@@ -317,8 +338,6 @@ votedSongs();
                 }
             }
             songNames = [];
-            localStorage["votedArray"] = "";
-            console.log(object);
             $.ajax({
                 async: true,
                 type: "POST",

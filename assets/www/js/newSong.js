@@ -140,27 +140,15 @@ else if (document.getElementById('filename').value.toLowerCase() == "reload.") {
 		$("#results").attr("style", "");
 		}
             else if (localStorage.Snapster) {
-                $.ajax({
-                    type: "GET",
-                    url: "https://api.spotify.com/v1/users/" + localStorage['userID'] + "/playlists/" + localStorage['Snapster'] + "/tracks",
-                    headers: { 'Authorization': 'Bearer ' + access_token  },
-                    dataType: "json",
-                    data: "formdata",
-                    success: function (trackData) {
-                        for (var i = 0; i < trackData.items.length; i++) {
-                            listOfTracks[i] = trackData.items[i].track.name.toUpperCase() + " " + trackData.items[i].track.artists[0].name.toUpperCase();
-                        }
-                    }
-                });
                 try {
                     partyPlaylist = [];
                     baseURL = "https://api.spotify.com/v1/users/";
-                    userID = $('#userID2').html();
+                    userID = localStorage.userID;
                     searchQry = document.getElementById('filename').value.toLowerCase();
                     $.ajax({
                         type: "GET",
                         url: "https://api.spotify.com/v1/search?q=" + searchQry + "&type=track,artist&market=us&limit=50&offset=0",
-                        headers: { 'Authorization': 'Bearer ' + access_token  },
+                        headers: { 'Authorization': 'Bearer ' + localStorage.current_token  },
                         dataType: "json",
                         data: "formdata",
                         success: function (myData) {
@@ -169,11 +157,11 @@ else if (document.getElementById('filename').value.toLowerCase() == "reload.") {
                             myDataLength = myData.tracks.items.length;
                             for (i = 0; i < myData.tracks.items.length; i++) {
                                 if (localStorage["explicit"] != "true" && localStorage["explicit"] != true) {
-                                    if (myData.tracks.items[i].explicit == false || myData.tracks.items[i].explicit == "false" && listOfTracks.indexOf(myData.tracks.items[i].name.toUpperCase() + " " + myData.tracks.items[i].artists[0].name.toUpperCase()) == -1) {
+                                    if (myData.tracks.items[i].explicit == false || myData.tracks.items[i].explicit == "false" && localStorage.CT.indexOf(myData.items[i].track.id) == -1) {
                                         $("#results").append("<header style='color: white !important; pointer-events: all;' ondblclick='newSong(" + i + ");' id='songLink" + i + "'class='songLinkClick' name=" + "'https://api.spotify.com/v1/users/" + localStorage['userID'] + "/playlists/" + localStorage['Snapster'] + '/tracks?&uris=spotify%3Atrack%3A' + myData.tracks.items[i].id + "'>" + "<div> <a></a> </div> <div> <p>" + myData.tracks.items[i].artists[0].name + "</p> <p>" + myData.tracks.items[i].name + "</p> </div> <div> <a>+</a> </div> </header>");
                                     }
                                 }
-                                else if (listOfTracks.indexOf(myData.tracks.items[i].name.toUpperCase() + " " + myData.tracks.items[i].artists[0].name.toUpperCase()) == -1) {
+                                else if (localStorage.CT.indexOf(myData.tracks.items[i].id) == -1) {
                                     $("#results").append("<header style='color: white !important; pointer-events: all;' ondblclick='newSong(" + i + ");' id='songLink" + i + "'class='songLinkClick' name=" + "'https://api.spotify.com/v1/users/" + localStorage['userID'] + "/playlists/" + localStorage['Snapster'] + '/tracks?&uris=spotify%3Atrack%3A' + myData.tracks.items[i].id + "'>" + "<div> <a></a> </div> <div> <p>" + myData.tracks.items[i].artists[0].name + "</p> <p>" + myData.tracks.items[i].name + "</p> </div> <div> <a>+</a> </div> </header>");
                                 }
                             }
@@ -198,6 +186,10 @@ window.newSong = function(i) {
         dataType: "json",
         data: "formdata",
         success: function (dataFirst) {
+            $("#filename").val("");
+            $("#results").css("padding-top", "");
+            $("#results").hide().fadeIn('fast');
+            nextSongs();
             partyPlaylist = [];
             $("#albumart").show();
             $("#albumart").fadeIn(1000);

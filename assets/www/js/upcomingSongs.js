@@ -67,12 +67,13 @@ window.updateFooter = function() {
 		   }, 100);
 		   }
 		   localStorage.lastFM = currentData.lastFM.slice(1, -1).toLowerCase();
-                   var song = currentData.songs.slice(1, -1);
-                   var artist = currentData.artist.slice(1, -1);
-                   localStorage["currentlyPlaying"] = song.toUpperCase();
-                   $('#footer2').html("<header alt='0' class='currentSong' id='currentSong'>" + artist + " - " + "<em>" + song + "</em>" + "</header><br/>");
-                   if (localStorage.currentlyPlayingWC != song.toUpperCase()) {
-                     localStorage["currentlyPlaying"] = song.toUpperCase();
+                  var song = currentData.songs.split(":::")[1].slice(0, -1);
+		  var songID = currentData.songs.split(":::")[0].substr(1);
+		  var artist = currentData.artist.slice(1, -1);
+		   localStorage["currentlyPlaying"] = song;
+                   $('#footer2').html("<header alt='0' class='currentSong' id='currentSong'>" + artist + " - " + "<em>" + songID + "</em>" + "</header><br/>");
+                   if (localStorage.currentlyPlayingWC != song) {
+                     localStorage["currentlyPlaying"] = song;
                      localStorage["k"] = 0;
                      localStorage["currentlyPlayingWC"] = localStorage["currentlyPlaying"];
                      nextSongs();
@@ -96,7 +97,8 @@ window.updateFooter = function() {
     else {
     	localStorage.CT1 = "";
     }
-    window.CT = function() {
+
+   window.CT = function() {
         if (localStorage.userID && localStorage.Snapster) {
             $.ajax({
                 async: false,
@@ -111,12 +113,12 @@ window.updateFooter = function() {
                     currentTracks = [];
                     currentTracks2 = [];
                     for (var i = 0; i < trackData.items.length; i++) {
-                        currentTracks[i] = trackData.items[i].track.name.toUpperCase();
-                        currentTracks2[i] = trackData.items[i].track.name;
+                        currentTracks[i] = trackData.items[i].track.id;
+                        currentTracks2[i] = trackData.items[i].track.id;
                     }
-                    localStorage.CT = currentTracks.toString().toUpperCase();
+                    localStorage.CT = currentTracks.toString();
                     localStorage.totalSongs = currentTracks.length;
-                    localStorage.currentlyPlayingWC = localStorage.currentlyPlaying.replace(/,/g, '');
+                    localStorage.currentlyPlayingWC = localStorage.currentlyPlaying;
                     if (currentTracks.indexOf(localStorage.currentlyPlayingWC) != -1) {
                         localStorage.currentTrack = currentTracks.indexOf(localStorage.currentlyPlayingWC);
                     } else {
@@ -197,27 +199,7 @@ for (var i = 0; i < $("#results").children("header").length; i++) {
       decrement(i);
   });
 }
-window.votedSongs = function () {
-    if (document.hasFocus() || localStorage.votedArray) {
-        for (i = 1; i < $("#results").children("header").length - 1; i++) {
-            if ($("#results").children("header").length > 0) {
-              if (localStorage.currentTrack == 0 && $("#songLinkClick" + i + " div:nth-child(3) a").text() == "+" || $("#songLinkClick" + i + " div:nth-child(1) a").text() == "-") {
-                  $("#songLinkClick" + i + " div:nth-child(1) a").css("color", "white");
-                  $("#songLinkClick" + i + " div:nth-child(3) a").css("color", "white");
-                  $("#songLinkClick" + i + " div:nth-child(1)").css("pointer-events", "all !important");
-                  $("#songLinkClick" + i + " div:nth-child(3)").css("pointer-events", "all !important");
-                  }
-            if ((document.getElementById('filename').value == "" || document.getElementById('filename').value == "Song or Artist...") && localStorage["votedArray"].indexOf($("#songLinkClick" + i).attr("title")) != -1) {
-                $("#songLinkClick" + i)[0].children[2].children[0].style.color = "black";
-                $("#songLinkClick" + i)[0].children[0].children[0].style.color = "black";
-                $("#songLinkClick" + i)[0].children[0].style.pointerEvents = "none";
-               $("#songLinkClick" + i)[0].children[2].style.pointerEvents = "none";
-              }
-            }
-        }
-    }
-}
-votedSongs();
+
    window.votes = function() {
         decrementArray = [];
         incrementArray = [];
@@ -236,7 +218,7 @@ votedSongs();
         });
     }
     window.sortVotes = function() {
-	if (!localStorage.uv) { votedSongs(); }
+	   if (!localStorage.uv) { votedSongs(); }
       for (var j = 1; j < $("#results").children("header").length - 1; j++) {
           var songNames = $("#songLinkClick" + j).attr("title");
           if (songNames.length >= 11) {
@@ -285,18 +267,12 @@ window.votedSongs = function () {
                   $("#songLinkClick" + i + " div:nth-child(1)").css("pointer-events", "all !important");
                   $("#songLinkClick" + i + " div:nth-child(3)").css("pointer-events", "all !important");
                   }
-            if ((document.getElementById('filename').value == "" || document.getElementById('filename').value == "Song or Artist...") && localStorage["votedArray"].toUpperCase().indexOf($("#songLinkClick" + i).attr("title")) != -1) {
+            if ((document.getElementById('filename').value == "" || document.getElementById('filename').value == "Song or Artist...") && localStorage["votedArray"].indexOf($("#songLinkClick" + i).attr("title")) != -1) {
                 $("#songLinkClick" + i)[0].children[2].children[0].style.color = "black";
                 $("#songLinkClick" + i)[0].children[0].children[0].style.color = "black";
                 $("#songLinkClick" + i)[0].children[0].style.pointerEvents = "none";
                $("#songLinkClick" + i)[0].children[2].style.pointerEvents = "none";
               }
-              if ($("#songLinkClick" + i + " div:nth-child(3) a").text() == "+X" || $("#songLinkClick" + i + " div:nth-child(1) a").text() == "-X") {
-                  $("#songLinkClick" + i + " div:nth-child(1) a").css("color", "black");
-                  $("#songLinkClick" + i + " div:nth-child(3) a").css("color", "black");
-                  $("#songLinkClick" + i + " div:nth-child(1) a").css("pointer-events", "none");
-                  $("#songLinkClick" + i + " div:nth-child(3) a").css("pointer-events", "none");
-                  }
             }
         }
     }
@@ -337,6 +313,7 @@ votedSongs();
                 }
             }
             songNames = [];
+            console.log(object);
             $.ajax({
                 async: true,
                 type: "POST",
@@ -409,7 +386,6 @@ votedSongs();
             }
             iaObject["range_start"] = i;
             iaObject["range_length"] = 1;
-            console.log(iaObject);
             $.ajax({
                 async: true,
                 type: "PUT",

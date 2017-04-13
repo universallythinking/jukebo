@@ -99,7 +99,7 @@ window.updateFooter = function() {
     }
 
    window.CT = function() {
-        if (localStorage.userID && localStorage.Snapster) {
+        if (localStorage.userID && localStorage.Snapster && isReady()) {
             $.ajax({
                 async: false,
                 type: "GET",
@@ -201,6 +201,7 @@ for (var i = 0; i < $("#results").children("header").length; i++) {
 }
 
    window.votes = function() {
+	   if (isReady()) {
         decrementArray = [];
         incrementArray = [];
         votesObject = {};
@@ -217,7 +218,9 @@ for (var i = 0; i < $("#results").children("header").length; i++) {
             }
         });
     }
+   }
     window.sortVotes = function() {
+	    if (isReady()) {
 	   if (!localStorage.uv) { votedSongs(); }
       for (var j = 1; j < $("#results").children("header").length - 1; j++) {
           var songNames = $("#songLinkClick" + j).attr("title");
@@ -248,7 +251,7 @@ for (var i = 0; i < $("#results").children("header").length; i++) {
           }
       }
     }
-
+    }
     setInterval(function() {
       votes();
       CT();
@@ -258,7 +261,7 @@ for (var i = 0; i < $("#results").children("header").length; i++) {
     }, 500);
 votes();
 window.votedSongs = function () {
-    if (document.hasFocus() || localStorage.votedArray) {
+    if ((document.hasFocus() || localStorage.votedArray) && isReady()) {
         for (i = 1; i < $("#results").children("header").length - 1; i++) {
             if ($("#results").children("header").length > 0) {
               if (localStorage.currentTrack == 0 && $("#songLinkClick" + i + " div:nth-child(3) a").text() == "+" || $("#songLinkClick" + i + " div:nth-child(1) a").text() == "-") {

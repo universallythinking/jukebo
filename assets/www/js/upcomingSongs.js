@@ -110,6 +110,11 @@ window.updateFooter = function() {
                 dataType: "json",
                 data: "formdata",
                 success: function(trackData) {
+	          if (trackData.items.length >= 75) {
+                    $("#filename").val("Limit of 75 Songs Reached");
+                    $("#filename").css("pointer-events", "none");
+                    $("#filename").css("color", "red");
+                  }
                     currentTracks = [];
                     currentTracks2 = [];
                     for (var i = 0; i < trackData.items.length; i++) {

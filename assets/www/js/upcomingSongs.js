@@ -93,7 +93,6 @@ window.updateFooter = function() {
  }
  setInterval(function () {
 	 updateFooter();
-         CT();
  }, 2500);
     if (localStorage.CT) {
 	    localStorage.CT1 = localStorage.CT.toUpperCase();
@@ -265,7 +264,7 @@ for (var i = 0; i < $("#results").children("header").length; i++) {
     setInterval(function() {
       votes();
       CT();
-    }, 5000);
+    }, 3000);
     setInterval(function() {
       sortVotes();
     }, 500);

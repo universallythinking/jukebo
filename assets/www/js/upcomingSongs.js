@@ -53,7 +53,7 @@ window.updateFooter = function() {
             $.ajax({
                async: false,
                type: "POST",
-               url: "http://spartify.herokuapp.com/"songRefresh",
+               url: "http://spartify.herokuapp.com/songRefresh",
                dataType: "json",
                data: obj1,
                success: function (currentData) {
@@ -218,7 +218,7 @@ for (var i = 0; i < $("#results").children("header").length; i++) {
         $.ajax({
             async: true,
             type: "POST",
-            url: "http://spartify.herokuapp.com/"votes",
+            url: "http://spartify.herokuapp.com/votes",
             dataType: "json",
             data: votesObject,
             success: function(dataFirst) {
@@ -362,7 +362,7 @@ votedSongs();
             $.ajax({
                 async: true,
                 type: "POST",
-                url: "http://spartify.herokuapp.com/"upVote",
+                url: "http://spartify.herokuapp.com/upVote",
                 dataType: "json",
                 data: object,
                 success: function(dataFirst) {
@@ -398,7 +398,7 @@ votedSongs();
             $.ajax({
                 async: true,
                 type: "POST",
-                url: "http://spartify.herokuapp.com/"downVote",
+                url: "http://spartify.herokuapp.com/downVote",
                 dataType: "json",
                 data: decrementObject,
                 success: function(dataFirst) {

@@ -133,10 +133,12 @@ form#host {
                         dataType: "json",
                         data: object,
                         success: function (accessData) {
+                            var plist = $.parseJSON(accessData["playlist"]);                           
                             localStorage["complete_access"] = true;
                             localStorage['password'] = $.parseJSON(accessData["password"]);
                             localStorage['explicit'] = $.parseJSON(accessData["explicit"]);
-                            localStorage['Snapster'] = $.parseJSON(accessData["playlist"]);
+                            localStorage['Snapster'] = plist.split(":::")[0];
+                            localStorage['Snapster2'] = plist.split(":::")[1];
                             localStorage["lastFM"] = $.parseJSON(accessData["lastFM"]);
                             localStorage["party"] = $.parseJSON(accessData["partyID"]);
                             localStorage["url"] = $.parseJSON(accessData["access_token"]);

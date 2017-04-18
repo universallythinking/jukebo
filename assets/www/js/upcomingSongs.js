@@ -1,6 +1,9 @@
 $(document).ready(function() {
+	$(document).on('visibilitychange', function() {
+	    nextSongs();
+        });
       window.isReady = function() {
-          if (!document.hidden && $("#currentSong").children().length > 0 && localStorage.lastFM && document.getElementById('filename').value == "Join a Party..." || document.getElementById('filename').value == "") {
+          if (!document.hidden && $("#currentSong").children().length > 0 && localStorage.lastFM && (document.getElementById('filename').value == "Join a Party..." || document.getElementById('filename').value == "")) {
               return true;
           } else {
               return false;
@@ -34,7 +37,7 @@ $(document).ready(function() {
       window.loading = function() {
           $("#load").css("visibility", "visible");
           var interval = setInterval(function() {
-              if ($("#results").children("header").length > 2) {
+              if ($("#results").children("header").length > 0) {
                   document.getElementById('load').style.visibility = "hidden";
                   document.getElementById('main').style.visibility = "visible";
                   clearInterval(interval);
@@ -50,7 +53,7 @@ window.updateFooter = function() {
             $.ajax({
                async: false,
                type: "POST",
-               url: "http://spartify.herokuapp.com/songRefresh",
+               url: "http://spartify.herokuapp.com/"songRefresh",
                dataType: "json",
                data: obj1,
                success: function (currentData) {
@@ -60,8 +63,9 @@ window.updateFooter = function() {
 	              location.reload();
 		   }, 100);
 		   }
-		   if (localStorage.Snapster != currentData.playlist.slice(1, -1)) {
-		     localStorage.Snapster = currentData.playlist.slice(1, -1);
+		   if (localStorage.Snapster != currentData.playlist.slice(1, -1).split(":::")[0]) {
+		     localStorage.Snapster = currentData.playlist.slice(1, -1).split(":::")[0];
+		     localStorage.Snapster2 = currentData.playlist.slice(1, -1).split(":::")[1];
 		    setTimeout(function() {
 	              location.reload();
 		   }, 100);
@@ -181,7 +185,7 @@ window.nextSongs = function() {
                       $("#results").append("<header title='" + currentPLData.items[i].track.id + "' style='color: white; pointer-events: none;' id='songLinkClick" + i + "'" + "class='songLinkClick played'> <div ondblclick='decrement(" + i + ", 1);' class='voteBtn'> <a>-</a> </div> <div> <p>" + currentPLData.items[i].track.artists[0].name + "</p> <p>" + currentPLData.items[i].track.name + "</p> </div> <div ondblclick='increment(" + i + ", 0);' class='voteBtn'> <a>+</a> </div> </header>");
                     }
                 }
-                if ($("#results").children("header").length > 1) {
+                if ($("#results").children("header").length > 0) {
                     document.getElementById("songLinkClick" + 0).style.color = "black";
                     $("#songLinkClick0").attr("name", "current");
                     $("[name='current']").css("id")
@@ -206,7 +210,7 @@ for (var i = 0; i < $("#results").children("header").length; i++) {
 }
 
    window.votes = function() {
-	   if (isReady()) {
+	   if ( isReady() ) {
         decrementArray = [];
         incrementArray = [];
         votesObject = {};
@@ -214,7 +218,7 @@ for (var i = 0; i < $("#results").children("header").length; i++) {
         $.ajax({
             async: true,
             type: "POST",
-            url: "http://spartify.herokuapp.com/votes",
+            url: "http://spartify.herokuapp.com/"votes",
             dataType: "json",
             data: votesObject,
             success: function(dataFirst) {
@@ -227,7 +231,7 @@ for (var i = 0; i < $("#results").children("header").length; i++) {
     window.sortVotes = function() {
 	    if (isReady()) {
 	   if (!localStorage.uv) { votedSongs(); }
-      for (var j = 1; j < $("#results").children("header").length - 1; j++) {
+      for (var j = 1; j < $("#results").children("header").length; j++) {
           var songNames = $("#songLinkClick" + j).attr("title");
           if (songNames.length >= 11) {
               songNames = songNames.slice(0, 10);
@@ -257,6 +261,7 @@ for (var i = 0; i < $("#results").children("header").length; i++) {
       }
     }
     }
+
     setInterval(function() {
       votes();
       CT();
@@ -267,7 +272,7 @@ for (var i = 0; i < $("#results").children("header").length; i++) {
 votes();
 window.votedSongs = function () {
     if ((document.hasFocus() || localStorage.votedArray) && isReady()) {
-        for (i = 1; i < $("#results").children("header").length - 1; i++) {
+        for (i = 1; i < $("#results").children("header").length; i++) {
             if ($("#results").children("header").length > 0) {
               if (localStorage.currentTrack == 0 && $("#songLinkClick" + i + " div:nth-child(3) a").text() == "+" || $("#songLinkClick" + i + " div:nth-child(1) a").text() == "-") {
                   $("#songLinkClick" + i + " div:nth-child(1) a").css("color", "white");
@@ -287,6 +292,38 @@ window.votedSongs = function () {
 }
 votedSongs();
     nextSongs();
+	window.addPopularSong = function(songID) {
+ if (localStorage.Snapster !== localStorage.Snapster2) {
+      $.ajax({
+          async: false,
+          type: "GET",
+          url: "https://api.spotify.com/v1/users/" + localStorage.userID + "/playlists/" + localStorage.Snapster2 + "/tracks",
+          headers: {
+              'Authorization': 'Bearer ' + localStorage.current_token
+          },
+          dataType: "json",
+          data: "formdata",
+          success: function(trackData) {
+              var currentTracksSnapster2 = [];
+              for (var i = 0; i < trackData.items.length; i++) {
+                  currentTracksSnapster2[i] = trackData.items[i].track.id;
+              }
+              if (currentTracksSnapster2.indexOf(songID) == -1) {
+                $.ajax({
+                  type: "POST",
+                  url: "https://api.spotify.com/v1/users/" + localStorage.userID + "/playlists/" + localStorage.Snapster2 + "/tracks?&uris=spotify%3Atrack%3A" + songID,
+                  headers: { 'Authorization': 'Bearer ' + localStorage.current_token  },
+                  dataType: "json",
+                  data: "formdata",
+                  success: function (dataFirst) {
+                    //
+                  }
+                });
+              }
+            }
+          });
+        }
+	}
     window.increment = function(i, l, y) {
           object = {};
           var songName = $("#songLinkClick" + i).attr("title");
@@ -325,7 +362,7 @@ votedSongs();
             $.ajax({
                 async: true,
                 type: "POST",
-                url: "http://spartify.herokuapp.com/upVote",
+                url: "http://spartify.herokuapp.com/"upVote",
                 dataType: "json",
                 data: object,
                 success: function(dataFirst) {
@@ -344,6 +381,9 @@ votedSongs();
                     else if (a1 >= 3) {
                         incrementAdmin(i, 0, -5);
                     }
+	            if (a1 >= 2) {
+			addPopularSong(songName);
+		    }
                 }
             });
         }
@@ -358,7 +398,7 @@ votedSongs();
             $.ajax({
                 async: true,
                 type: "POST",
-                url: "http://spartify.herokuapp.com/downVote",
+                url: "http://spartify.herokuapp.com/"downVote",
                 dataType: "json",
                 data: decrementObject,
                 success: function(dataFirst) {

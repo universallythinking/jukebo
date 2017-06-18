@@ -13,12 +13,13 @@
     <uses-permission name="android.permission.INTERNET" />
     <access origin="*" />
     <access origin="http://spartify.herokuapp.com/" />
+    <access origin="http://partymusic.co/*" />
     <allow-intent href="*" />
     <allow-navigation href="*" />
-    <allow-intent href="https://spartify.herokuapp.com/" />
+    <allow-intent href="http://partymusic.co/*" />
     <allow-navigation href="https://*" />
     <allow-intent href="https://*" />
-    <allow-navigation href="http://spartify.herokuapp.com/" />
+    <allow-navigation href="http://partymusic.co/*" />
     <icon src="icon.png" />
     <splash density="land-hdpi" src="res/screens/android/screen-hdpi-landscape.png" />
     <splash density="land-ldpi" src="res/screens/android/screen-ldpi-landscape.png" />

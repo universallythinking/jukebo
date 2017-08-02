@@ -25,4 +25,7 @@
     <preference name="AndroidLaunchMode" value="singleTop" />
     <preference name="Orientation" value="portrait" />
     <preference name="loadUrlTimeoutValue" value="700000" />
+  <platform name="ios">
+    <icon platform="ios" src="icon.png" />
+  </platform>
 </widget>

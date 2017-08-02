@@ -2,6 +2,7 @@
 <widget defaultlocale="en-US" id="com.univthink.jukebox" version="3.2.3" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0"
   xmlns:vs="http://schemas.microsoft.com/appx/2014/htmlapps">
   <plugin name="cordova-plugin-whitelist" source="npm" />
+  <plugin name="SplashScreen" value="CDVSplashScreen" />
     <name>PartyMusic Jukebox - Guest</name>
     <description>Jukebox application for Spotify</description>
     <author email="ben@univthink.com" href="http://universallythinking.com">Ben Barnett</author>

@@ -19,21 +19,10 @@
     <allow-navigation href="https://*" />
     <allow-intent href="https://*" />
     <allow-navigation href="http://partymusic.co/*" />
-    <icon src="icon.png" />
-    <splash density="land-hdpi" src="res/screens/android/screen-hdpi-landscape.png" />
-    <splash density="land-ldpi" src="res/screens/android/screen-ldpi-landscape.png" />
-    <splash density="land-mdpi" src="res/screens/android/screen-mdpi-landscape.png" />
-    <splash density="land-xhdpi" src="res/screens/android/screen-xhdpi-landscape.png" />
-    <splash density="port-hdpi" src="res/screens/android/screen-hdpi-portrait.png" />
-    <splash density="port-ldpi" src="res/screens/android/screen-ldpi-portrait.png" />
-    <splash density="port-mdpi" src="res/screens/android/screen-mdpi-portrait.png" />
-    <splash density="port-xhdpi" src="res/screens/android/screen-xhdpi-portrait.png" />
+    <icon src="res/xml/icon.png" />
     <preference name="loglevel" value="DEBUG" />
-    <preference name="SplashScreen" value="screen" />
-    <preference name="windows-target-version" value="10.0" />
-    <preference name="Fullscreen" value="False" />
+    <preference name="Fullscreen" value="True" />
     <preference name="AndroidLaunchMode" value="singleTop" />
     <preference name="Orientation" value="portrait" />
     <preference name="loadUrlTimeoutValue" value="700000" />
-    <icon src="res/xml/icon.png" />
 </widget>

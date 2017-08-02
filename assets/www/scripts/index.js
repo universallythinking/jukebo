@@ -6,7 +6,7 @@
     "use strict";
 
     document.addEventListener('deviceready', onDeviceReady.bind(this), false);
-
+    navigator.splashscreen.hide();
     function onDeviceReady() {
         window.plugins.webintent.onNewIntent(function (url) {
             if (url.indexOf("box:/") > 2) {

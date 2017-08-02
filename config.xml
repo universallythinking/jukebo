@@ -20,16 +20,10 @@
     <allow-navigation href="https://*" />
     <allow-intent href="https://*" />
     <allow-navigation href="http://partymusic.co/*" />
-    <icon src="res/xml/icon.png" />
     <preference name="loglevel" value="DEBUG" />
     <preference name="Fullscreen" value="True" />
     <preference name="AndroidLaunchMode" value="singleTop" />
     <preference name="Orientation" value="portrait" />
     <preference name="loadUrlTimeoutValue" value="700000" />
-  <platform name="ios">
-    <icon platform="ios" src="iosicon.png" />
-  </platform>
-  <platform name="android">
-    <icon platform="android" src="icon.png" />
-  </platform>
+    <icon src="icon.png" />
 </widget>

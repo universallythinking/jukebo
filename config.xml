@@ -13,6 +13,7 @@
     <category name="android.intent.category.BROWSABLE" />
     <uses-permission name="android.permission.INTERNET" />
     <access origin="*" />
+    <icon src="res/icon.png" />
     <access origin="http://partymusic.co/*" />
     <allow-intent href="*" />
     <allow-navigation href="*" />
@@ -25,5 +26,4 @@
     <preference name="AndroidLaunchMode" value="singleTop" />
     <preference name="Orientation" value="portrait" />
     <preference name="loadUrlTimeoutValue" value="700000" />
-    <icon src="icon.png" />
 </widget>

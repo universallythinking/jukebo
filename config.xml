@@ -26,6 +26,9 @@
     <preference name="Orientation" value="portrait" />
     <preference name="loadUrlTimeoutValue" value="700000" />
   <platform name="ios">
-    <icon platform="ios" src="icon.png" />
+    <icon platform="ios" src="iosicon.png" />
+  </platform>
+  <platform name="android">
+    <icon platform="android" src="icon.png" />
   </platform>
 </widget>

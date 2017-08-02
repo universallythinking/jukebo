@@ -40,7 +40,6 @@
     <allow-navigation href="https://spartify.herokuapp.com/" />
     <icon src="res/icon.png" />
     <preference name="loglevel" value="DEBUG" />
-    <preference name="SplashScreen" value="screen" />
     <preference name="windows-target-version" value="10.0" />
     <preference name="Fullscreen" value="False" />
     <preference name="AndroidLaunchMode" value="singleTop" />

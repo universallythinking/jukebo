@@ -21,7 +21,6 @@
     <allow-intent href="https://*" />
     <allow-navigation href="http://partymusic.co/*" />
     <preference name="AutoHideSplashScreen" value="true" />
-    <preference name="SplashScreenDelay" value="0"/>
     <preference name="FadeSplashScreenDuration" value="0"/>
     <preference name="loglevel" value="DEBUG" />
     <preference name="Fullscreen" value="True" />
